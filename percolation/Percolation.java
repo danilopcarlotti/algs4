@@ -32,16 +32,16 @@ public class Percolation {
 			throw new java.lang.IllegalArgumentException();
 		}
 		matrix[row-1][col-1] = 1;
-		if ((row-2 >= 0) && isOpen(row-1,col)) {
+		if ((row-2 > 0) && isOpen(row-1,col)) {
 			wqu.union((size*(row-1))+col, (size*(row-2))+col);
 		}
-		if ((row+1 <= size) && isOpen(row+1,col)) {
+		if ((row+1 < size) && isOpen(row+1,col)) {
 			wqu.union((size*(row-1))+col, (size*(row+1))+col);
 		}
-		if ((col-2 >= 0) && isOpen(row,col-1)) {
+		if ((col-2 > 0) && isOpen(row,col-1)) {
 			wqu.union((size*(row-1))+col, (size*(row-1))+col-1);
 		}
-		if ((col+1 <= size) && isOpen(row,col+1)) {
+		if ((col+1 < size) && isOpen(row,col+1)) {
 			wqu.union((size*(row-1))+col, (size*(row-1))+col+1);
 		}
 	}
@@ -65,10 +65,10 @@ public class Percolation {
 		return wqu.connected(0, size*size+1);
 	}
 	public static void main(String[] args) {
-//		Percolation p = new Percolation(8);
-//		System.out.println(p.isFull(1,1));
-//		System.out.println(p.isOpen(1,1));
-//		p.open(1, 1);
-//		System.out.println(p.isFull(1,1));
+		Percolation p = new Percolation(8);
+		System.out.println(p.isFull(1,1));
+		System.out.println(p.isOpen(1,1));
+		p.open(1, 1);
+		System.out.println(p.isFull(1,1));
    }
 }
